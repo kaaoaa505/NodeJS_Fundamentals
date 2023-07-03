@@ -1,0 +1,1 @@
+console.log('Web page external script loaded successfully.');
