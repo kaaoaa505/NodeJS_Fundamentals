@@ -1,0 +1,5 @@
+function myFun(){
+    //...............
+    myFun();
+}
+myFun();
