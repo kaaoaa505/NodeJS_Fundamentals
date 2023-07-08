@@ -1,0 +1,13 @@
+{
+  "name": "12_readline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "001_user_input.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Khaled Allam",
+  "license": "ISC",
+  "type": "module"
+}
