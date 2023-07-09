@@ -1,13 +1,13 @@
 {
-  "name": "13_console_draw",
+  "name": "15_animation",
   "version": "1.0.0",
-  "main": "001_basics.js",
+  "description": "",
+  "main": "001_loading.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Khaled Allam",
   "license": "ISC",
-  "type": "module",
-  "description": ""
+  "type": "module"
 }
