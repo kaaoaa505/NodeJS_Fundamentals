@@ -7,6 +7,7 @@ import UsersById from "./UserById.js";
 import UsersSearch from "./UsersSearch.js";
 import UserCreate from "./UserCreate.js";
 import UserUpdate from "./UserUpdate.js";
+import UserDelete from "./UserDelete.js";
 
 const PORT = 3000;
 
@@ -50,9 +51,22 @@ const server = http.createServer((req, res) => {
     if (
       pathname.startsWith("/users/") &&
       pathname.slice(1).split("/").length === 2
-      ) {
-        const userId = pathname.slice(1).split("/")[1] ?? 0;
+    ) {
+      const userId = pathname.slice(1).split("/")[1] ?? 0;
       UserUpdate(req, res, userId);
+    } else {
+      statusCode = 404;
+      data = "Not Found";
+    }
+  }
+
+  if (method === "DELETE") {
+    if (
+      pathname.startsWith("/users/") &&
+      pathname.slice(1).split("/").length === 2
+    ) {
+      const userId = pathname.slice(1).split("/")[1] ?? 0;
+      UserDelete(req, res, userId);
     } else {
       statusCode = 404;
       data = "Not Found";
