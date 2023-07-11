@@ -10,6 +10,7 @@ const UserCreate = (req, res) => {
     const newUser = JSON.parse(body);
     users.push(newUser);
   });
+  
   res.writeHead(200);
   res.end(JSON.stringify(users));
 };
