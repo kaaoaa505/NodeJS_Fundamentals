@@ -1,7 +1,7 @@
 import KallamServer from "./KallamServer.js";
 import routes from "./routes.js";
 
-const PORT = 4000;
+const PORT = 3000;
 
 const server = KallamServer.create(routes);
 

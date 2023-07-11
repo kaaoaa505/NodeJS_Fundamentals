@@ -1,18 +1,26 @@
 import http from "http";
 import urlParser from "url";
+import qs from "querystring";
 
 export default {
   create: (routes) => {
     const server = http.createServer(function (request, response) {
       const { url, method } = request;
-      const { pathname } = urlParser.parse(url);
+      const { pathname, query: queryString } = urlParser.parse(url);
+      const query = qs.parse(queryString);
 
       const route = routes.find((r) => {
         return r.method === method && r.path === pathname;
       });
 
       if (route) {
-        const { statusCode, data } = route.onRequest();
+        const routeObj = {
+          request,
+          response,
+          query,
+        };
+
+        const { statusCode, data } = route.onRequest(routeObj);
         response.writeHead(statusCode);
         response.end(data);
       } else {
