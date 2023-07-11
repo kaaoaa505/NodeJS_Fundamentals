@@ -1,5 +1,5 @@
 {
-  "name": "18_web_server",
+  "name": "19_rest_api",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
@@ -10,5 +10,9 @@
   "keywords": [],
   "author": "Khaled Allam",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "querystring": "^0.2.1",
+    "url": "^0.11.1"
+  }
 }
