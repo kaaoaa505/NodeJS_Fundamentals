@@ -26,15 +26,44 @@ export default {
         }
 
         const route = routes.find((r) => {
-          return r.method === method && r.path === pathname;
+          if (r.path.includes(":")) {
+            let routeSegments = r.path.slice(1).split("/");
+            let requestSegments = pathname.slice(1).split("/");
+
+            let staticSegmentsMatch = true;
+            for (let [index, segment] of routeSegments.entries()) {
+              if (!segment.startsWith(":")) {
+                staticSegmentsMatch =
+                  staticSegmentsMatch && segment === requestSegments[index];
+              }
+            }
+
+            return r.method === method && staticSegmentsMatch;
+          } else {
+            return r.method === method && r.path === pathname;
+          }
         });
 
         if (route) {
+          let urlParams = {};
+
+          if (route.path.includes(":")) {
+            let routeSegments = route.path.slice(1).split("/");
+            let requestSegments = pathname.slice(1).split("/");
+
+            for (let [index, segment] of routeSegments.entries()) {
+              if (segment.startsWith(":")) {
+                urlParams[segment.slice(1)] = requestSegments[index];
+              }
+            }
+          }
+
           const routeObj = {
             request,
             response,
             query,
             body,
+            urlParams,
           };
 
           const { statusCode, data } = route.onRequest(routeObj);
